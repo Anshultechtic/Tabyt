@@ -11,9 +11,10 @@ public class CreateEventTest extends BaseClass {
 		lp_obj.enterEmail("oliverwhite@yopmail.com");
 		lp_obj.enterPassword("Test@123");
 		lp_obj.clickOnLoginButton();
-		ce_obj.clickOnCreateTab();
-		ce_obj.clickOnCreateTab_Events();
+//		ce_obj.clickOnCreateTab();
+//		ce_obj.clickOnCreateTab_Events();
 		ce_obj.clickOnCreate_New_Button();
+		ce_obj.clickOnCreate_New_Button_2();
 		
 		
 

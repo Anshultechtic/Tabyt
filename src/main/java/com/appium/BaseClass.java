@@ -1,6 +1,8 @@
 package com.appium;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.Duration;
 
@@ -24,11 +26,16 @@ public class BaseClass {
 	public AndroidDriver ConnectToAppium()  {
 		UiAutomator2Options options = new UiAutomator2Options();
 		
-		options.setDeviceName("Pixel 3a API 30");
+		options.setDeviceName("Pixel 3a XL API 30");
 		options.setApp(System.getProperty("user.dir") + "\\src\\test\\java\\resources\\app-release.apk");
 		AndroidDriver driver = null;
 		try {
-			driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
+			try {
+				driver = new AndroidDriver(new URI("http://127.0.0.1:4723/").toURL(), options);
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
