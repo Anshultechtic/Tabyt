@@ -9,20 +9,37 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">64,042</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">61,695</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.appium.CreateEventTest</td><td><a href="#m0">createEventTest</a></td><td rowspan="1">1722952021597</td><td rowspan="1">45180</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.appium.CreateEventTest</td><td><a href="#m0">createEventTest</a></td><td rowspan="1">1722953511496</td><td rowspan="1">45856</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">com.appium.CreateEventTest#createEventTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">io.appium.java_client.NoSuchContextException: An unknown server-side error occurred while processing the command. Original error: Can&apos;t stop process; it&apos;s not currently running (cmd: &apos;D:\\Downloads\\chromes\\chrome-win32 --port\=63096 --adb-port\=5037 --verbose&apos;)
+<h2>Default test</h2><h3 id="m0">com.appium.CreateEventTest#createEventTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.InvalidElementStateException: Cannot set the element to &apos;This is a description&apos;. Did you interact with the correct element?
 Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
 System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.1&apos;
 Driver info: io.appium.java_client.android.AndroidDriver
-Command: [a0259221-1b37-405a-82d2-34b51e55e827, switchToContext {name=WEBVIEW_com.tabytorganizer}]
+Command: [9490ece4-8a75-4eae-94f1-77fa55035337, sendKeysToElement {id=00000000-0000-029f-ffff-ffff000000eb, value=[Ljava.lang.CharSequence;@23eff5d1}]
 Capabilities {appium:app: D:\GitRepos\Tabyt\src\test\..., appium:appPackage: com.tabytorganizer, appium:automationName: UIAutomator2, appium:chromedriverExecutable: D:\Downloads\chromes\chrome..., appium:databaseEnabled: false, appium:desired: {app: D:\GitRepos\Tabyt\src\test\..., automationName: UIAutomator2, chromedriverExecutable: D:\Downloads\chromes\chrome..., deviceName: Pixel 4a API 30, platformName: ANDROID}, appium:deviceApiLevel: 30, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone_x86, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 400, appium:deviceScreenSize: 1080x2160, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.5, appium:platformVersion: 11, appium:statBarHeight: 60, appium:takesScreenshot: true, appium:viewportRect: {height: 2100, left: 0, top: 60, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: a0259221-1b37-405a-82d2-34b51e55e827
-	at io.appium.java_client.remote.SupportsContextSwitching.context(SupportsContextSwitching.java:48)
-	at utilities.UtilClass.switchToWebView(UtilClass.java:64)
-	at com.appium.CreateEventTest.createEventTest(CreateEventTest.java:21)
+Element: [[AndroidDriver:  on ANDROID (9490ece4-8a75-4eae-94f1-77fa55035337)] -&gt; xpath: //android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[1]/android.view.ViewGroup//child::android.webkit.WebView]
+Session ID: 9490ece4-8a75-4eae-94f1-77fa55035337
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:237)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:110)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at io.appium.java_client.pagefactory.ElementInterceptor.getObject(ElementInterceptor.java:42)
+	at io.appium.java_client.pagefactory.interceptors.InterceptorOfASingleElement.call(InterceptorOfASingleElement.java:79)
+	at io.appium.java_client.proxy.Interceptor.intercept(Interceptor.java:78)
+	at org.openqa.selenium.remote.RemoteWebElement$ByteBuddy$iNjQ8Q6O.sendKeys(Unknown Source)
+	at pageLayer.CreateEvent.enterDescription(CreateEvent.java:154)
+	at com.appium.CreateEventTest.createEventTest(CreateEventTest.java:23)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
@@ -49,26 +66,6 @@ Session ID: a0259221-1b37-405a-82d2-34b51e55e827
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. Original error: Can&apos;t stop process; it&apos;s not currently running (cmd: &apos;D:\\Downloads\\chromes\\chrome-win32 --port\=63096 --adb-port\=5037 --verbose&apos;)
-Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.1&apos;
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [a0259221-1b37-405a-82d2-34b51e55e827, switchToContext {name=WEBVIEW_com.tabytorganizer}]
-Capabilities {appium:app: D:\GitRepos\Tabyt\src\test\..., appium:appPackage: com.tabytorganizer, appium:automationName: UIAutomator2, appium:chromedriverExecutable: D:\Downloads\chromes\chrome..., appium:databaseEnabled: false, appium:desired: {app: D:\GitRepos\Tabyt\src\test\..., automationName: UIAutomator2, chromedriverExecutable: D:\Downloads\chromes\chrome..., deviceName: Pixel 4a API 30, platformName: ANDROID}, appium:deviceApiLevel: 30, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone_x86, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 400, appium:deviceScreenSize: 1080x2160, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.5, appium:platformVersion: 11, appium:statBarHeight: 60, appium:takesScreenshot: true, appium:viewportRect: {height: 2100, left: 0, top: 60, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: a0259221-1b37-405a-82d2-34b51e55e827
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:237)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:591)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:305)
-	at io.appium.java_client.remote.SupportsContextSwitching.context(SupportsContextSwitching.java:45)
-	... 28 more
 </div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

@@ -18,7 +18,7 @@ public class CreateEventTest extends BaseClass {
 		ce_obj.enterEventName("Test Event");
 		util_obj.ScrollDown(17);
 		ce_obj.enterDJsName("Test Dj");
-		ce_obj.switchToWebView();
+//		ce_obj.switchToWebView();
 		Thread.sleep(2000);
 		ce_obj.enterDescription("This is a description");
 		

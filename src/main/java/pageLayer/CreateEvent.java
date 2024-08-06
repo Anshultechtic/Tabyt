@@ -65,7 +65,7 @@ public class CreateEvent extends UtilClass {
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"DJ Names\"]")
 	private WebElement DJs_name;
 
-	@AndroidFindBy(xpath = "//android.webkit.WebView")
+	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[1]/android.view.ViewGroup//child::android.webkit.WebView")
 	private WebElement  description;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Continue\"]")
