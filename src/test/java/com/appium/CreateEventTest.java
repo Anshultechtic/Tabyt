@@ -15,7 +15,10 @@ public class CreateEventTest extends BaseClass {
 //		ce_obj.clickOnCreateTab_Events();
 		ce_obj.clickOnCreate_New_Button();
 		ce_obj.clickOnCreate_New_Button_2();
-		
+		ce_obj.enterEventName("Test Event");
+		util_obj.ScrollDown(10);
+		ce_obj.enterDJsName("Test Dj");
+		ce_obj.enterDescription("This is a description");
 		
 
 	}

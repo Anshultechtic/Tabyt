@@ -12,13 +12,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import utilities.UtilClass;
 
-public class CreateEvent {
+public class CreateEvent extends UtilClass {
 
 	private AndroidDriver driver;
 
 	public CreateEvent(AndroidDriver driver) {
-
+		super(driver);
 		this.driver = driver;
 
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
@@ -61,10 +62,10 @@ public class CreateEvent {
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"DJ Names\"]")
 	private WebElement DJs_name;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Create New Event\"]")
+	@AndroidFindBy(xpath = "(//android.webkit.WebView)[0]")
 	private WebElement description;
 
-	@AndroidFindBy(xpath = "//android.webkit.WebView[@text=\"RN Rich Text Editor\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Continue\"]")
 	private WebElement continue_button;
 
 	public void clickOnCreateTab() {
@@ -91,7 +92,7 @@ public class CreateEvent {
 		}
 		Create_New_Event_btn.click();
 	}
-	
+
 	public void clickOnCreate_New_Button_2() {
 
 		try {
@@ -101,45 +102,53 @@ public class CreateEvent {
 			e.printStackTrace();
 		}
 		Create_New_Event_btn.click();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
 	}
 
+	public void enterEventName(String name) {
+		event_Name.sendKeys(name);
+	}
 	public void selectStartDate() {
 		startDate.click();
 	}
-	
+
 	public void selectStartTime() {
 		start_time.click();
 	}
-	
+
 	public void selectEndDate() {
 		endDate.click();
 	}
-	
+
 	public void selectEndTime() {
 		end_time.click();
 	}
-	
+
 	public void selectAgeRequirement_DD() {
 		age_Requirement_DD.click();
 	}
-	
+
 	public void selectEventType_DD() {
 		event_Type_DD.click();
 	}
-	
+
 	public void selectMusicType_DD() {
 		music_Type_DD.click();
 	}
-	
+
 	public void enterDJsName(String name) {
 		DJs_name.sendKeys(name);
 	}
-	
+
 	public void enterDescription(String desc) {
 		description.sendKeys(desc);
 	}
-	
-	
-	
-	
+
 }
