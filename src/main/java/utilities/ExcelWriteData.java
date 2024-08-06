@@ -16,7 +16,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelWriteData {
 
-	static String path = System.getProperty("user.dir") + "\\src\\test\\java\\resources\\Standard_Sheet_10.xlsx";
+	static String path = System.getProperty("user.dir") + "\\src\\test\\java\\resources\\Import_jjj.xlsx";
 	static String F_name = null;
 	static String L_name = null;
 	static int number_of_rows= 30;
@@ -38,7 +38,7 @@ public class ExcelWriteData {
 			e.printStackTrace();
 		}
 
-		System.out.println(Random_First_Names() + " " + Random_Last_Names());
+//		System.out.println(Random_First_Names() + " " + Random_Last_Names());
 	}
 
 	public static List<String> createEmail(int noOfRows) {

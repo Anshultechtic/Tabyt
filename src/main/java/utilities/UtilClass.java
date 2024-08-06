@@ -11,6 +11,7 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -55,7 +56,16 @@ public class UtilClass extends BaseClass {
 	
 	
 
-	
+	 public void switchToWebView() {
+	        Set<String> contextNames = driver.getContextHandles();
+	        for (String context : contextNames) {
+	            System.out.println("Available context: " + context);
+	            if (context.contains("WEBVIEW")) {
+	                driver.context(context);
+	                break;
+	            }
+	        }
+	    }
 
 	public void uploadXrayPhotoLocation(String location) {
 

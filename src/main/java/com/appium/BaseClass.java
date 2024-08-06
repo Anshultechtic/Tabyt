@@ -25,17 +25,19 @@ import utilities.UtilClass;
  */
 public class BaseClass {
 	public AndroidDriver driver;
-	public LoginPage lp_obj ;
-	public CreateEvent ce_obj ;
+	public LoginPage lp_obj;
+	public CreateEvent ce_obj;
 	public UtilClass util_obj;
 	String phone_3a = "Pixel 3a XL API 30";
 	String phone_4a = "Pixel 4a API 30";
-	public AndroidDriver ConnectToAppium()  {
+
+	public AndroidDriver ConnectToAppium() {
 		UiAutomator2Options options = new UiAutomator2Options();
-		
+
 //		options.setDeviceName(phone_3a);
 		options.setDeviceName(phone_4a);
 		options.setApp(System.getProperty("user.dir") + "\\src\\test\\java\\resources\\app-release 06-08.apk");
+		options.setCapability("chromedriverExecutable", "D:\\Downloads\\chromes\\chrome-win32");
 		AndroidDriver driver = null;
 		try {
 			try {
@@ -48,25 +50,23 @@ public class BaseClass {
 			e.printStackTrace();
 		}
 		System.out.println("Chalu ho gaya");
-	util_obj = new UtilClass(driver);
+		util_obj = new UtilClass(driver);
 		lp_obj = new LoginPage(driver);
-		ce_obj= new CreateEvent(driver);
+		ce_obj = new CreateEvent(driver);
 		return driver;
-		
+
 	}
-	
+
 	@BeforeMethod
 	public void launchApplication() {
 		ConnectToAppium();
-		
+
 	}
+
 //	@AfterMethod
 	public void tearDown() {
 		ConnectToAppium().close();
-		
+
 	}
-	
-	
-	
-	
+
 }

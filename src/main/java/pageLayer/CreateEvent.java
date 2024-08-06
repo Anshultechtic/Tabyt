@@ -4,8 +4,11 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -62,11 +65,11 @@ public class CreateEvent extends UtilClass {
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"DJ Names\"]")
 	private WebElement DJs_name;
 
-	@AndroidFindBy(xpath = "(//android.webkit.WebView)[0]")
-	private WebElement description;
+	@AndroidFindBy(xpath = "//android.webkit.WebView")
+	private WebElement  description;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Continue\"]")
-	private WebElement continue_button;
+	private WebElement  continue_button;
 
 	public void clickOnCreateTab() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50)); // 50 seconds
