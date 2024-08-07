@@ -11,15 +11,37 @@ public class CreateEventTest extends BaseClass {
 		lp_obj.enterEmail("oliverwhite@yopmail.com");
 		lp_obj.enterPassword("Test@123");
 		lp_obj.clickOnLoginButton();
-//		ce_obj.clickOnCreateTab();
-//		ce_obj.clickOnCreateTab_Events();
 		ce_obj.clickOnCreate_New_Button();
 		ce_obj.clickOnCreate_New_Button_2();
 		ce_obj.enterEventName("Test Event");
-		util_obj.ScrollDown(17);
-		ce_obj.enterDJsName("Test Dj");
-//		ce_obj.switchToWebView();
+		ce_obj.selectStartDate();
+		ce_obj.selectStart_Date_option(8);
+		ce_obj.time_ok_btn();
+		ce_obj.selectEndDate();
+		ce_obj.selectEnd_Date_option(9);
+		ce_obj.time_ok_btn();
+		util_obj.ScrollDown1(1);
+		ce_obj.selectAgeRequirement_DD();
 		Thread.sleep(2000);
+		ce_obj.selectAgeRequirement_DD_options_18_plus();
+		ce_obj.selectAgeRequirement_Done_btn();
+		ce_obj.selectEventType_DD();
+		ce_obj.selectEventType_options("Car show");
+		ce_obj.selectEventType_options("Cocktail Party");
+		ce_obj.selectEventType_options("Festival");
+		ce_obj.selectEventType_Done_btn();
+		util_obj.ScrollDown1(1);
+		ce_obj.selectMusicType_DD();
+		ce_obj.selectMusicType_options("Disco");
+		ce_obj.selectMusicType_Done_btn();
+		util_obj.ScrollDown1(1);
+		util_obj.ScrollDown1(1);
+		ce_obj.enterDJsName("Rockerz");
+		util_obj.ScrollDown1(2);
+		
+//		util_obj.ScrollDown1(5);
+//		ce_obj.switchToWebView();
+//		Thread.sleep(2000);
 		ce_obj.enterDescription("This is a description");
 		
 

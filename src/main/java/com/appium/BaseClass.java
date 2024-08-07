@@ -36,7 +36,7 @@ public class BaseClass {
 
 //		options.setDeviceName(phone_3a);
 		options.setDeviceName(phone_4a);
-		options.setApp(System.getProperty("user.dir") + "\\src\\test\\java\\resources\\app-release 06-08.apk");
+		options.setApp(System.getProperty("user.dir") + "\\src\\test\\java\\resources\\ORG 7-AUG.apk");
 		options.setCapability("chromedriverExecutable", "D:\\Downloads\\chromes\\chrome-win32");
 		AndroidDriver driver = null;
 		try {

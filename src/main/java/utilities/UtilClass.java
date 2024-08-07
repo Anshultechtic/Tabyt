@@ -33,9 +33,8 @@ import org.testng.annotations.DataProvider;
 import com.appium.BaseClass;
 import com.google.common.collect.ImmutableMap;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
-
-
 
 public class UtilClass extends BaseClass {
 
@@ -53,19 +52,17 @@ public class UtilClass extends BaseClass {
 		PageFactory.initElements(driver, this);
 
 	}
-	
-	
 
-	 public void switchToWebView() {
-	        Set<String> contextNames = driver.getContextHandles();
-	        for (String context : contextNames) {
-	            System.out.println("Available context: " + context);
-	            if (context.contains("WEBVIEW")) {
-	                driver.context(context);
-	                break;
-	            }
-	        }
-	    }
+	public void switchToWebView() {
+		Set<String> contextNames = driver.getContextHandles();
+		for (String context : contextNames) {
+			System.out.println("Available context: " + context);
+			if (context.contains("WEBVIEW")) {
+				driver.context(context);
+				break;
+			}
+		}
+	}
 
 	public void uploadXrayPhotoLocation(String location) {
 
@@ -111,18 +108,27 @@ public class UtilClass extends BaseClass {
 
 	}
 
-	public void ScrollDown(int percentage) {
+	public void ScrollDown1(int percentage) {
 		// Java
 		// Java
-		boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture", ImmutableMap.of(
-		    "left", 100, "top", 100, "width", 200, "height", 200,
-		    "direction", "down",
-		    "percent", percentage
-		));
-		
-		
+		boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture",
+				ImmutableMap.of("left", 500, "top", 500, "width", 500, "height", 500, "direction", "down", "percent",
+						percentage));
 
 	}
+
+	public void ScrollDown_into_View(String text) {
+
+//		driver.findElement(
+//			    AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + text + "\"));"));
+
+		driver.findElement(
+			    AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\"" + text + "\"));"));
+
+
+	}
+
+	
 
 	public void ScrollIntoView(WebElement element) {
 
@@ -241,8 +247,7 @@ public class UtilClass extends BaseClass {
 	@DataProvider(name = "dp")
 	public static Object[][] readDataBook14() {
 
-		String path = System.getProperty("user.dir") + "\\src\\test"
-				+ "\\resources\\ExcelSheets\\PD_details.xlsx";
+		String path = System.getProperty("user.dir") + "\\src\\test" + "\\resources\\ExcelSheets\\PD_details.xlsx";
 		Object[][] data = null;
 		Map<String, String> map = new HashMap<>();
 		try {
@@ -278,14 +283,11 @@ public class UtilClass extends BaseClass {
 		return data;
 
 	}
-	
-	
-	
+
 	@DataProvider(name = "dp1")
 	public static Object[][] readDataBook() {
 
-		String path = System.getProperty("user.dir") + "\\src\\test"
-				+ "\\resources\\ExcelSheets\\PD_details.xlsx";
+		String path = System.getProperty("user.dir") + "\\src\\test" + "\\resources\\ExcelSheets\\PD_details.xlsx";
 		Object[][] data = null;
 		Map<String, String> map = new HashMap<>();
 		try {
@@ -321,10 +323,9 @@ public class UtilClass extends BaseClass {
 		return data;
 
 	}
-	
-	
-	
-	public static void WriteData3(String sheetname, String message, int startRownum, String colNmae) throws IOException {
+
+	public static void WriteData3(String sheetname, String message, int startRownum, String colNmae)
+			throws IOException {
 
 		String path = System.getProperty("user.dir") + "\\src\\test\\resources\\ExcelSheets\\Book22.xlsx";
 
@@ -353,9 +354,9 @@ public class UtilClass extends BaseClass {
 				Row r = null;
 				if (wb.getSheetAt(i).getRow(startRownum) == null) {
 					r = wb.getSheetAt(i).createRow(startRownum);
-				}  else {
-					
-					r= wb.getSheetAt(i).getRow(startRownum);
+				} else {
+
+					r = wb.getSheetAt(i).getRow(startRownum);
 				}
 				Iterator<Cell> cellIt = wb.getSheetAt(i).getRow(0).cellIterator();
 
@@ -383,10 +384,11 @@ public class UtilClass extends BaseClass {
 		}
 
 	}
-	public static void WriteData2(String sheetname, 
-			String message, int startRownum, String colNmae) throws IOException {
 
-		String path =  System.getProperty("user.dir")+ "\\src\\test\\resources\\ExcelSheets\\Book22.xlsx";
+	public static void WriteData2(String sheetname, String message, int startRownum, String colNmae)
+			throws IOException {
+
+		String path = System.getProperty("user.dir") + "\\src\\test\\resources\\ExcelSheets\\Book22.xlsx";
 
 		FileInputStream fis = new FileInputStream(path);
 
@@ -437,9 +439,9 @@ public class UtilClass extends BaseClass {
 		}
 	}
 
-	public  void WriteData(String sheetname, String message, int startRownum, String colNmae) throws IOException {
+	public void WriteData(String sheetname, String message, int startRownum, String colNmae) throws IOException {
 
-		String path = System.getProperty("user.dir")+ "\\src\\test\\resources\\ExcelSheets\\Book22.xlsx";
+		String path = System.getProperty("user.dir") + "\\src\\test\\resources\\ExcelSheets\\Book22.xlsx";
 
 		FileInputStream fis = new FileInputStream(path);
 
@@ -463,9 +465,8 @@ public class UtilClass extends BaseClass {
 
 			System.out.println("Cell Number to write is " + cellNum);
 			if (sheetName.equalsIgnoreCase(sheetname)) {
-				
-				Row r =wb.getSheetAt(i).createRow(startRownum);
-				
+
+				Row r = wb.getSheetAt(i).createRow(startRownum);
 
 				Iterator<Cell> cellIt = wb.getSheetAt(i).getRow(0).cellIterator();
 
@@ -479,12 +480,12 @@ public class UtilClass extends BaseClass {
 					storeCell++;
 
 				}
-				for (int j = startRownum; j < startRownum+1; j++) {
+				for (int j = startRownum; j < startRownum + 1; j++) {
 
 					r.createCell(cellNum).setCellValue(message);
 					FileOutputStream fos = new FileOutputStream(path);
 					wb.write(fos);
-					System.out.println(j +" Done!!");
+					System.out.println(j + " Done!!");
 
 				}
 
