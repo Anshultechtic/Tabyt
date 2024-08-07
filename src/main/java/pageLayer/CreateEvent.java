@@ -56,7 +56,7 @@ public class CreateEvent extends UtilClass {
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"00:00 AM\"])[1]")
 	private WebElement start_time;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"MM/DD/YYYY\"])[2]")
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"MM/DD/YYYY\"])[2]") 
 	private WebElement endDate;
 
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"00:00 AM\"])[2]")
@@ -156,7 +156,8 @@ public class CreateEvent extends UtilClass {
 	}
 
 	public void selectStart_Date_option(int Date) {
-		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\""+Date+"\"));")).click();
+		driver.findElement(AppiumBy.androidUIAutomator(
+				"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\"" + Date + "\"));")).click();
 
 	}
 
@@ -170,7 +171,8 @@ public class CreateEvent extends UtilClass {
 
 	public void selectEnd_Date_option(int Date) {
 
-		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\""+Date+"\"));")).click();
+		driver.findElement(AppiumBy.androidUIAutomator(
+				"new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\"" + Date + "\"));")).click();
 	}
 
 	public void selectEndTime() {
@@ -179,19 +181,17 @@ public class CreateEvent extends UtilClass {
 
 	public void choose_Time(String time_half, int hour, int minute) {
 
-		if (time_half.equalsIgnoreCase("am")) {
-			driver.findElement(By.xpath("//android.widget.RadioButton[@resource-id=\"android:id/pm_label\"]")).click();
-		} else {
-			driver.findElement(By.xpath("//android.widget.RadioButton[@resource-id=\"android:id/am_label\"]")).click();
+		driver.findElement(By.xpath("//android.widget.RadioButton[@resource-id='android:id/am_label']")).click();
+		
+		driver.findElement(By.xpath("//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='"+hour+"']")).click();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-		driver.findElement(
-				By.xpath("//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + hour + "']"))
-				.click();
-		driver.findElement(By
-				.xpath("//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + minute + "']"))
-				.click();
-
+		driver.findElement(By.xpath("//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='"+minute+"']")).click();
+		
 	}
 
 	public void time_ok_btn() {

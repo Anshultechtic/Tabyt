@@ -4,10 +4,9 @@ import org.testng.annotations.Test;
 
 public class CreateEventTest extends BaseClass {
 
-	
 	@Test
 	public void createEventTest() throws InterruptedException {
-	
+
 		lp_obj.enterEmail("oliverwhite@yopmail.com");
 		lp_obj.enterPassword("Test@123");
 		lp_obj.clickOnLoginButton();
@@ -17,9 +16,18 @@ public class CreateEventTest extends BaseClass {
 		ce_obj.selectStartDate();
 		ce_obj.selectStart_Date_option(8);
 		ce_obj.time_ok_btn();
+		ce_obj.selectStartTime();
+		Thread.sleep(2000);
+		ce_obj.choose_Time("AM", 2, 30);
+		ce_obj.time_ok_btn();
+		Thread.sleep(5000);
 		ce_obj.selectEndDate();
 		ce_obj.selectEnd_Date_option(9);
 		ce_obj.time_ok_btn();
+		ce_obj.selectEndTime();
+		ce_obj.choose_Time("PM", 3, 40);
+		ce_obj.time_ok_btn();
+		Thread.sleep(2000);
 		util_obj.ScrollDown1(1);
 		ce_obj.selectAgeRequirement_DD();
 		Thread.sleep(2000);
@@ -38,12 +46,11 @@ public class CreateEventTest extends BaseClass {
 		util_obj.ScrollDown1(1);
 		ce_obj.enterDJsName("Rockerz");
 		util_obj.ScrollDown1(2);
-		
+
 //		util_obj.ScrollDown1(5);
 //		ce_obj.switchToWebView();
 //		Thread.sleep(2000);
 		ce_obj.enterDescription("This is a description");
-		
 
 	}
 
