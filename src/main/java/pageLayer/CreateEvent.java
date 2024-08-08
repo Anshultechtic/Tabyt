@@ -2,14 +2,22 @@ package pageLayer;
 
 import java.awt.event.KeyEvent;
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.PressesKey;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -21,9 +29,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.google.common.collect.ImmutableMap;
 
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.touch.offset.PointOption;
 import utilities.UtilClass;
 
 public class CreateEvent extends UtilClass {
@@ -136,8 +146,8 @@ public class CreateEvent extends UtilClass {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Skip\"]")
 	private WebElement skip;
-	
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Publish Event\"]")
+
+	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[4]")
 	private WebElement publish_event_button;
 
 	public void clickOnCreateTab() {
@@ -225,7 +235,12 @@ public class CreateEvent extends UtilClass {
 
 	public void choose_Time(String time_half, int hour, int minute) {
 
-		driver.findElement(AppiumBy.id("android:id/am_label")).click();
+		if (time_half.equalsIgnoreCase("AM")) {
+			driver.findElement(AppiumBy.id("android:id/am_label")).click();
+		} else {
+
+			driver.findElement(AppiumBy.id("android:id/pm_label")).click();
+		}
 
 		driver.findElement(
 				By.xpath("//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + hour + "']"))
@@ -336,17 +351,20 @@ public class CreateEvent extends UtilClass {
 
 	public void enterAddress(String address1) {
 		address.click();
-		
+
 		driver.pressKey(new io.appium.java_client.android.nativekey.KeyEvent(AndroidKey.W));
 		driver.pressKey(new io.appium.java_client.android.nativekey.KeyEvent(AndroidKey.A));
 		driver.pressKey(new io.appium.java_client.android.nativekey.KeyEvent(AndroidKey.S));
 		driver.pressKey(new io.appium.java_client.android.nativekey.KeyEvent(AndroidKey.H));
-		
+
 		driver.hideKeyboard();
-		waitTillVisible(By.xpath("//android.widget.TextView[@text=\"Washington Square Park, Washington Square, New York, NY, USA\"]"),30);
-		driver.findElement(By.xpath("//android.widget.TextView[@text=\"Washington Square Park, Washington Square, New York, NY, USA\"]")).click();
-		
-		
+		waitTillVisible(By.xpath(
+				"//android.widget.TextView[@text=\"Washington Square Park, Washington Square, New York, NY, USA\"]"),
+				30);
+		driver.findElement(By.xpath(
+				"//android.widget.TextView[@text=\"Washington Square Park, Washington Square, New York, NY, USA\"]"))
+				.click();
+
 	}
 
 	public void enterZipCode(String zip) {
@@ -363,44 +381,82 @@ public class CreateEvent extends UtilClass {
 	}
 
 	public void click_On_Continue() {
-		
-		waitTillVisible(By.xpath("//android.widget.TextView[@text=\"Continue\"]"),10);
+
+		waitTillVisible(By.xpath("//android.widget.TextView[@text=\"Continue\"]"), 10);
 		continue_button.click();
 
 	}
-	
+
 	public void skip_for_now() {
-		waitTillVisible(By.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]"),10);
+		waitTillVisible(By.xpath(
+				"//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]"),
+				10);
 
 		skip_for_now.click();
 	}
-	
+
 	public void allowAccessPhoto() {
-		
-		driver.findElement(By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_foreground_only_button\"]")).click();
-		
+
+		driver.findElement(By.xpath(
+				"//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_foreground_only_button\"]"))
+				.click();
+
 	}
 
 	public void uploadFlier() {
 		upload_main_flier.click();
-		waitTillVisible(By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_foreground_only_button\"]"),10);
+		waitTillVisible(By.xpath(
+				"//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_foreground_only_button\"]"),
+				10);
 		allowAccessPhoto();
-		waitTillVisible(By.xpath("(//android.widget.ImageView[@resource-id=\"com.google.android.providers.media.module:id/icon_thumbnail\"])[1]"),10);
-		driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.google.android.providers.media.module:id/icon_thumbnail\"])[1]")).click();
-		waitTillVisible(By.xpath("//android.widget.TextView[@content-desc=\"Crop\"]"),10);
+		waitTillVisible(By.xpath(
+				"(//android.widget.ImageView[@resource-id=\"com.google.android.providers.media.module:id/icon_thumbnail\"])[1]"),
+				10);
+		driver.findElement(By.xpath(
+				"(//android.widget.ImageView[@resource-id=\"com.google.android.providers.media.module:id/icon_thumbnail\"])[1]"))
+				.click();
+		waitTillVisible(By.xpath("//android.widget.TextView[@content-desc=\"Crop\"]"), 10);
 		driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"Crop\"]")).click();
-		
-		
+
 	}
-	
+
 	public void skip_create_ticket_Screen() {
-		waitTillVisible(By.xpath("//android.widget.TextView[@text=\"Skip\"]"),10);
+		waitTillVisible(By.xpath("//android.widget.TextView[@text=\"Skip\"]"), 10);
 		skip.click();
+		
 	}
 
 	public void click_publish_Event() {
 		skip_for_now.click();
-		waitTillVisible(By.xpath("//android.widget.TextView[@text=\"Publish Event\"]"),10);
-		publish_event_button.click();
+
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// Initialize the PointerInput and Actions object
+		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+		Sequence tap = new Sequence(finger, 1);
+		Dimension screenSize = driver.manage().window().getSize();
+		int width = screenSize.getWidth();
+		int height = screenSize.getHeight();
+		int x = width / 2;        // Middle of the screen horizontally
+		int y = (int) (height * 0.9);
+		// Define the tap action
+		tap.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
+		tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+		tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+		// Perform the action
+		driver.perform(Arrays.asList(tap));
+		
+	
+	System.out.println(height);
+	System.out.println(driver.findElement(By.xpath("//android.widget.TextView[@text=\"Music\"]")).getLocation().x);
+	
+	System.out.println(driver.findElement(By.xpath("//android.widget.TextView[@text=\"Music\"]")).getLocation().y);
+
 	}
 }

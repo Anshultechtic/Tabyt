@@ -69,6 +69,8 @@ public class CreateEventTest extends BaseClass {
 		ce_obj.click_On_Continue();
 		Thread.sleep(1000);
 		ce_obj.skip_for_now();
+		Thread.sleep(1000);
+		util_obj.ScrollDown1(2);
 		ce_obj.click_publish_Event();
 	}
 
