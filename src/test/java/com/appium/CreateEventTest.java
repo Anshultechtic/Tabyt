@@ -72,6 +72,8 @@ public class CreateEventTest extends BaseClass {
 		Thread.sleep(1000);
 		util_obj.ScrollDown1(2);
 		ce_obj.click_publish_Event();
+		ce_obj.enterPassword_Popup("Test@123");
+		ce_obj.Password_Popup_Submit();
 	}
 
 }

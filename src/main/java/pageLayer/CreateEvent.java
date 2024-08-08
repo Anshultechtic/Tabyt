@@ -150,6 +150,12 @@ public class CreateEvent extends UtilClass {
 	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[4]")
 	private WebElement publish_event_button;
 
+	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"Enter your Password\"]")
+	private WebElement enter_password_popup;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Submit\"]")
+	private WebElement submit;
+	
 	public void clickOnCreateTab() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50)); // 50 seconds
 
@@ -171,13 +177,15 @@ public class CreateEvent extends UtilClass {
 //		} catch (InterruptedException e) {
 //			e.printStackTrace();
 //		}
-
+ScrollDown1(3);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
 
 		// Wait until the element is visible (adjust the locator as per your app)
 		WebElement element = wait.until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Create New Event\"]")));
 
+		
+		
 		Create_New_Event_btn.click();
 	}
 
@@ -451,12 +459,22 @@ public class CreateEvent extends UtilClass {
 
 		// Perform the action
 		driver.perform(Arrays.asList(tap));
-		
-	
-	System.out.println(height);
-	System.out.println(driver.findElement(By.xpath("//android.widget.TextView[@text=\"Music\"]")).getLocation().x);
-	
-	System.out.println(driver.findElement(By.xpath("//android.widget.TextView[@text=\"Music\"]")).getLocation().y);
 
 	}
+	
+	public void enterPassword_Popup(String password) {
+		waitTillVisible(By.xpath("//android.widget.EditText[@text=\"Enter your Password\"]"), 10);
+		enter_password_popup.sendKeys(password);
+	}
+	
+	public void Password_Popup_Submit() {
+				submit.click();
+
+	}
+	
+	
+	
+	
+	
+	
 }
