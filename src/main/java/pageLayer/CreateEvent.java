@@ -56,10 +56,10 @@ public class CreateEvent extends UtilClass {
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"00:00 AM\"])[1]")
 	private WebElement start_time;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"MM/DD/YYYY\"])[2]") 
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"MM/DD/YYYY\"]")
 	private WebElement endDate;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"00:00 AM\"])[2]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"00:00 AM\"]")
 	private WebElement end_time;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"android:id/button1\"]")
@@ -181,17 +181,21 @@ public class CreateEvent extends UtilClass {
 
 	public void choose_Time(String time_half, int hour, int minute) {
 
-		driver.findElement(By.xpath("//android.widget.RadioButton[@resource-id='android:id/am_label']")).click();
-		
-		driver.findElement(By.xpath("//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='"+hour+"']")).click();
+		driver.findElement(AppiumBy.id("android:id/am_label")).click();
+
+		driver.findElement(
+				By.xpath("//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + hour + "']"))
+				.click();
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		driver.findElement(By.xpath("//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='"+minute+"']")).click();
-		
+		driver.findElement(By
+				.xpath("//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + minute + "']"))
+				.click();
+
 	}
 
 	public void time_ok_btn() {
@@ -209,8 +213,6 @@ public class CreateEvent extends UtilClass {
 
 		age_Requirement_DD_options_18_plus.click();
 
-//		driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text("+option+")")).click();
-//		driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text("+option+")")).click();
 	}
 
 	public void selectAgeRequirement_DD_options_14_plus() {
@@ -289,6 +291,11 @@ public class CreateEvent extends UtilClass {
 		driver.pressKey(new io.appium.java_client.android.nativekey.KeyEvent(AndroidKey.T));
 		driver.hideKeyboard();
 		// To enter text
+
+	}
+
+	public void click_On_Continue() {
+		continue_button.click();
 
 	}
 

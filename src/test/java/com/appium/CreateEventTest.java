@@ -24,7 +24,9 @@ public class CreateEventTest extends BaseClass {
 		ce_obj.selectEndDate();
 		ce_obj.selectEnd_Date_option(9);
 		ce_obj.time_ok_btn();
+		Thread.sleep(2000);
 		ce_obj.selectEndTime();
+		Thread.sleep(1000);
 		ce_obj.choose_Time("PM", 3, 40);
 		ce_obj.time_ok_btn();
 		Thread.sleep(2000);
@@ -51,7 +53,7 @@ public class CreateEventTest extends BaseClass {
 //		ce_obj.switchToWebView();
 //		Thread.sleep(2000);
 		ce_obj.enterDescription("This is a description");
-
+		ce_obj.click_On_Continue();
 	}
 
 }
