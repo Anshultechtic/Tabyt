@@ -12,9 +12,9 @@ public class CreateEventTest extends BaseClass {
 		lp_obj.clickOnLoginButton();
 		ce_obj.clickOnCreate_New_Button();
 		ce_obj.clickOnCreate_New_Button_2();
-		ce_obj.enterEventName("Test Event");
+		ce_obj.enterEventName("Automated Event");
 		ce_obj.selectStartDate();
-		ce_obj.selectStart_Date_option(8);
+		ce_obj.selectStart_Date_option(10);
 		ce_obj.time_ok_btn();
 		ce_obj.selectStartTime();
 		Thread.sleep(2000);
@@ -22,7 +22,7 @@ public class CreateEventTest extends BaseClass {
 		ce_obj.time_ok_btn();
 		Thread.sleep(5000);
 		ce_obj.selectEndDate();
-		ce_obj.selectEnd_Date_option(9);
+		ce_obj.selectEnd_Date_option(15);
 		ce_obj.time_ok_btn();
 		Thread.sleep(2000);
 		ce_obj.selectEndTime();
@@ -54,6 +54,22 @@ public class CreateEventTest extends BaseClass {
 //		Thread.sleep(2000);
 		ce_obj.enterDescription("This is a description");
 		ce_obj.click_On_Continue();
+		Thread.sleep(2000);
+		ce_obj.enterAddress("Wahington DC");
+//		ce_obj.enterZipCode("20001");
+//		ce_obj.enterState("DC");
+		util_obj.ScrollDown1(1);
+//		ce_obj.enterCity("new york");
+		ce_obj.click_On_Continue();
+		ce_obj.click_On_Continue();
+		ce_obj.uploadFlier();
+		ce_obj.click_On_Continue();
+		ce_obj.skip_create_ticket_Screen();
+		ce_obj.click_On_Continue();
+		ce_obj.click_On_Continue();
+		Thread.sleep(1000);
+		ce_obj.skip_for_now();
+		ce_obj.click_publish_Event();
 	}
 
 }

@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
@@ -13,6 +14,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import pageLayer.CreateEvent;
@@ -30,7 +32,7 @@ public class BaseClass {
 	public UtilClass util_obj;
 	String phone_3a = "Pixel 3a XL API 30";
 	String phone_4a = "Pixel 4a API 30";
-
+	String real_phone_redMi = "Xiaomi 21061119BI API 33-ext12";
 	public AndroidDriver ConnectToAppium() {
 		UiAutomator2Options options = new UiAutomator2Options();
 
@@ -53,14 +55,16 @@ public class BaseClass {
 		util_obj = new UtilClass(driver);
 		lp_obj = new LoginPage(driver);
 		ce_obj = new CreateEvent(driver);
+		
 		return driver;
 
 	}
 
 	@BeforeMethod
 	public void launchApplication() {
-		ConnectToAppium();
-
+		driver=ConnectToAppium();
+		util_obj.waitTillVisible(By.id("com.android.permissioncontroller:id/permission_allow_button"), 20);
+		driver.findElement(AppiumBy.id("com.android.permissioncontroller:id/permission_allow_button")).click();
 	}
 
 //	@AfterMethod

@@ -104,6 +104,42 @@ public class CreateEvent extends UtilClass {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Continue\"]")
 	private WebElement continue_button;
 
+	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"Search\"]")
+	private WebElement address;
+
+	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"00000\"]")
+	private WebElement zip_Code;
+
+	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"State\"]")
+	private WebElement state;
+
+	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"City\"]")
+	private WebElement city;
+
+	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]")
+	private WebElement skip_for_now;
+
+	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup")
+	private WebElement upload_main_flier;
+
+	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup")
+	private WebElement upload_row_1_1;
+
+	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup")
+	private WebElement upload_row_1_2;
+
+	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[3]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup")
+	private WebElement upload_row_2_1;
+
+	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup")
+	private WebElement upload_row_2_2;
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Skip\"]")
+	private WebElement skip;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Publish Event\"]")
+	private WebElement publish_event_button;
+
 	public void clickOnCreateTab() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50)); // 50 seconds
 
@@ -120,34 +156,42 @@ public class CreateEvent extends UtilClass {
 
 	public void clickOnCreate_New_Button() {
 
-		try {
-			Thread.sleep(8000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(10000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+		// Wait until the element is visible (adjust the locator as per your app)
+		WebElement element = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Create New Event\"]")));
+
 		Create_New_Event_btn.click();
 	}
 
 	public void clickOnCreate_New_Button_2() {
 
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
+		waitTillVisible(By.xpath("//android.widget.TextView[@text=\"Create New Event\"]"), 20);
 		Create_New_Event_btn.click();
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(5000);
+//		} catch (InterruptedException e) {
+//
+//			e.printStackTrace();
+//		}
 
 	}
 
 	public void enterEventName(String name) {
+		waitTillVisible(By.xpath("//android.widget.EditText[@text=\"Event Name\"]"), 20);
 		event_Name.sendKeys(name);
 	}
 
@@ -186,12 +230,16 @@ public class CreateEvent extends UtilClass {
 		driver.findElement(
 				By.xpath("//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + hour + "']"))
 				.click();
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(1000);
+//		} catch (InterruptedException e) {
+//			
+//			e.printStackTrace();
+//		}
+
+		waitTillVisible(By.xpath(
+				"//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + minute + "']"), 20);
+
 		driver.findElement(By
 				.xpath("//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + minute + "']"))
 				.click();
@@ -218,25 +266,17 @@ public class CreateEvent extends UtilClass {
 	public void selectAgeRequirement_DD_options_14_plus() {
 
 		age_Requirement_DD_options_14_plus.click();
-
-//		driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text("+option+")")).click();
-//		driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text("+option+")")).click();
 	}
 
 	public void selectAgeRequirement_DD_options_21_plus() {
 
 		age_Requirement_DD_options_21_plus.click();
-
-//		driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text("+option+")")).click();
-//		driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text("+option+")")).click();
 	}
 
 	public void selectAgeRequirement_Done_btn() {
 
 		age_Requirement_Done_btn.click();
 
-//		driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text("+option+")")).click();
-//		driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text("+option+")")).click();
 	}
 
 	public void selectEventType_DD() {
@@ -294,9 +334,73 @@ public class CreateEvent extends UtilClass {
 
 	}
 
+	public void enterAddress(String address1) {
+		address.click();
+		
+		driver.pressKey(new io.appium.java_client.android.nativekey.KeyEvent(AndroidKey.W));
+		driver.pressKey(new io.appium.java_client.android.nativekey.KeyEvent(AndroidKey.A));
+		driver.pressKey(new io.appium.java_client.android.nativekey.KeyEvent(AndroidKey.S));
+		driver.pressKey(new io.appium.java_client.android.nativekey.KeyEvent(AndroidKey.H));
+		
+		driver.hideKeyboard();
+		waitTillVisible(By.xpath("//android.widget.TextView[@text=\"Washington Square Park, Washington Square, New York, NY, USA\"]"),30);
+		driver.findElement(By.xpath("//android.widget.TextView[@text=\"Washington Square Park, Washington Square, New York, NY, USA\"]")).click();
+		
+		
+	}
+
+	public void enterZipCode(String zip) {
+		zip_Code.sendKeys(zip);
+	}
+
+	public void enterState(String stateName) {
+		state.sendKeys(stateName);
+	}
+
+	public void enterCity(String cityName) {
+		ScrollDown_into_View("City");
+		city.sendKeys(cityName);
+	}
+
 	public void click_On_Continue() {
+		
+		waitTillVisible(By.xpath("//android.widget.TextView[@text=\"Continue\"]"),10);
 		continue_button.click();
 
 	}
+	
+	public void skip_for_now() {
+		waitTillVisible(By.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]"),10);
 
+		skip_for_now.click();
+	}
+	
+	public void allowAccessPhoto() {
+		
+		driver.findElement(By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_foreground_only_button\"]")).click();
+		
+	}
+
+	public void uploadFlier() {
+		upload_main_flier.click();
+		waitTillVisible(By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_foreground_only_button\"]"),10);
+		allowAccessPhoto();
+		waitTillVisible(By.xpath("(//android.widget.ImageView[@resource-id=\"com.google.android.providers.media.module:id/icon_thumbnail\"])[1]"),10);
+		driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.google.android.providers.media.module:id/icon_thumbnail\"])[1]")).click();
+		waitTillVisible(By.xpath("//android.widget.TextView[@content-desc=\"Crop\"]"),10);
+		driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"Crop\"]")).click();
+		
+		
+	}
+	
+	public void skip_create_ticket_Screen() {
+		waitTillVisible(By.xpath("//android.widget.TextView[@text=\"Skip\"]"),10);
+		skip.click();
+	}
+
+	public void click_publish_Event() {
+		skip_for_now.click();
+		waitTillVisible(By.xpath("//android.widget.TextView[@text=\"Publish Event\"]"),10);
+		publish_event_button.click();
+	}
 }

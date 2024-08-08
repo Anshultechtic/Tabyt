@@ -35,6 +35,7 @@ import com.google.common.collect.ImmutableMap;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class UtilClass extends BaseClass {
 
@@ -49,7 +50,7 @@ public class UtilClass extends BaseClass {
 		this.driver = driver;
 		js = (JavascriptExecutor) this.driver;
 		a = new Actions(driver);
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 
 	}
 
@@ -150,10 +151,10 @@ public class UtilClass extends BaseClass {
 
 	}
 
-	public void waitTillVisible(WebElement element, int seconds) {
+	public void waitTillVisible(By by, int seconds) {
 
 		wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-		wait.until(ExpectedConditions.visibilityOf(element));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 
 	}
 
@@ -164,15 +165,7 @@ public class UtilClass extends BaseClass {
 
 	}
 
-	public void waitTillCirclesInvisible() {
-		WebElement element = driver
-				.findElement(By.xpath("//div[@class = 'ng-tns-c14-0 la-3x la-ball-scale-multiple ng-star-inserted']"));
-		boolean circles = element.isDisplayed();
-		System.out.println("Before wait" + circles);
-		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		wait.until(ExpectedConditions.invisibilityOf(element));
-
-	}
+	
 
 	public void waitTillClickable(WebElement element, int seconds) {
 

@@ -16,10 +16,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelWriteData {
 
-	static String path = System.getProperty("user.dir") + "\\src\\test\\java\\resources\\Import_jjj.xlsx";
+	static String path = System.getProperty("user.dir") + "\\src\\test\\java\\resources\\Import_1000.xlsx";
 	static String F_name = null;
 	static String L_name = null;
-	static int number_of_rows= 30;
+	static int number_of_rows= 1001;
 	static List<String> firstNameList = new ArrayList<>();
 	static List<String> lastNameList = new ArrayList<>();
 	public static void main(String[] args) {
@@ -120,7 +120,7 @@ public class ExcelWriteData {
 
 		for (int i = 1; i < noOfRows; i++) {
 
-			lastNameList.add(Random_Last_Names());
+			lastNameList.add(Random_Last_Names()+"_"+i);
 		}
 
 		return lastNameList;
